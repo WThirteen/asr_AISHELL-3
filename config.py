@@ -14,10 +14,12 @@ test_texts_data_path = 'AISHELL-3/test/content.txt'
 model_path = 'asr_AISHELL.h5'
 
 # 存放pkl路径 /pkl名字
-pkl_path = 'dictionary.pkl'
+pkl_path = 'pkl_all/dictionary.pkl'
 
+# 存放labels路径
+labels_path = 'pkl_all/labels.pkl'
 # features.pkl路径
-features_path = 'features.pkl'
+features_path = 'pkl_all/features.pkl'
 
 # model_name
 
