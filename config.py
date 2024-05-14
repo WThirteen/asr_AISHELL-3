@@ -16,11 +16,14 @@ model_path = 'asr_AISHELL.h5'
 # 存放pkl路径 /pkl名字
 pkl_path = 'dictionary.pkl'
 
+# features.pkl路径
+features_path = 'features.pkl'
+
 # model_name
 
 batch_size = 16
 
-epochs = 50
+epochs = 25
 
 num_blocks = 3
 
