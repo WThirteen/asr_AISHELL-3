@@ -129,16 +129,25 @@ def wav_features(paths,total):
         features.append(mfcc(audio, sr, numcep=config.mfcc_dim, nfft=551))
     return features
 
+def save_features(features):
+    with open(config.features_path, 'wb') as fw:
+        pickle.dump(features,fw)
+
+def load_features():
+    with open(config.features_path, 'rb') as f:  
+        features = pickle.load(f)
+    return features
+
 def normalized_features(features): 
     #随机选择100个数据集
-    amples = random.sample(features, 100)
+    samples = random.sample(features, 100)
     samples = np.vstack(samples)
     #平均MFCC的值为了归一化处理
     mfcc_mean = np.mean(samples, axis=0)
     #计算标准差为了归一化
     mfcc_std = np.std(samples, axis=0)
-    print(mfcc_mean)
-    print(mfcc_std)
+    # print(mfcc_mean)
+    # print(mfcc_std)
     #归一化特征
     features = [(feature - mfcc_mean) / (mfcc_std + 1e-14) for feature in features]
 
@@ -175,8 +184,6 @@ def data_set(total,features,texts):
 
     return X_train,Y_train,X_test,Y_test
 
-
-# batch_size = 16
 
 #定义训练批次的产生，一次训练16个
 def batch_generator(x, y,char2id):
@@ -297,6 +304,7 @@ def draw_loss(history):
 
 
 def run():
+    print("-----load data-----")
     path_train = load_wav_data(path=config.train_wav_data_path)
     path_test = load_wav_data(path=config.test_wav_data_path)
     paths = []
@@ -311,7 +319,13 @@ def run():
     char2id,id2char = save_labels(texts)
 
     total = len(texts)
+    print("-----Extract audio features-----")
     features = wav_features(paths,total)
+
+    print("-----save features-----")
+    save_features(features)
+
+    
     mfcc_mean,mfcc_std,features = normalized_features(features)
 
     X_train,Y_train,X_test,Y_test = data_set(total,features,texts)
@@ -326,10 +340,10 @@ def run():
     lr_decay = ReduceLROnPlateau(monitor='loss', factor=0.2, patience=1, min_lr=1e-6)
     #开始训练
     history = model.fit_generator(
-        generator=batch_generator(X_train, Y_train),
+        generator=batch_generator(X_train, Y_train, char2id),
         steps_per_epoch=len(X_train) // config.batch_size,
         epochs=config.epochs,
-        validation_data=batch_generator(X_test, Y_test),
+        validation_data=batch_generator(X_test, Y_test, char2id),
         validation_steps=len(X_test) // config.batch_size,
         callbacks=[checkpointer, lr_decay])
     
@@ -339,9 +353,3 @@ def run():
 
 if __name__ == '__main__' :
     run()
-
-
-
-
-
-
