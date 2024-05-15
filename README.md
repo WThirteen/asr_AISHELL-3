@@ -21,8 +21,8 @@ python train.py
 python train_v2.py
 ```
 ## loss曲线：
-__epochs=25__
-![epoch_25](epochs_25.png)
+__epochs=25__  
+![epochs_25](https://github.com/WThirteen/asr_AISHELL-3/assets/100677199/c4ad5342-aee6-4950-833d-59c424b15f1e)
 
 ## librosa版本问题
 这里使用的 *librosa==0.7.2*  
