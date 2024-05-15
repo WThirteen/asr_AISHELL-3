@@ -11,16 +11,19 @@ test_wav_data_path = 'AISHELL-3/test/wav/'
 test_texts_data_path = 'AISHELL-3/test/content.txt'
 
 # 存放模型路径 /模型名字
-model_path = 'asr_AISHELL.h5'
+model_path = 'model/asr_AISHELL.h5'
 
 # 存放pkl路径 /pkl名字
 pkl_path = 'pkl_all/dictionary.pkl'
 
 # 存放labels路径
 labels_path = 'pkl_all/labels.pkl'
+
 # features.pkl路径
 features_path = 'pkl_all/features.pkl'
 
+# 外部导入音频路径
+audio_path = 'AISHELL-3/train/wav/SSB0005/SSB00050001.wav'
 # model_name
 
 batch_size = 16
