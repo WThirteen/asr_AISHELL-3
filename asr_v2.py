@@ -50,7 +50,7 @@ def set_data(wavs, mfcc_mean, mfcc_std):
     audio = audio[indices[0]:indices[-1]] if indices.size else audio[0:0]
     X_data = mfcc(audio, sr, numcep=mfcc_dim, nfft=551)
     X_data = (X_data - mfcc_mean) / (mfcc_std + 1e-14)
-    print(X_data.shape)
+    # print(X_data.shape)
     return X_data
 
 
