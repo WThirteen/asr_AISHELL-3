@@ -20,7 +20,7 @@ python train.py
 ```
 python train_v2.py
 ```
-! 在train_v4中增加tensorboard  
+* 在train_v4中增加tensorboard  
 可查看训练日志
 ## 查看训练日志
 输入命令
