@@ -22,6 +22,16 @@ python train_v2.py
 ```
 * 在train_v4中增加tensorboard  
 可查看训练日志
+## 使用web进行语音识别
+运行
+```
+python asr_web.py
+```
+* 可进行读取录音
+* 本地录制并上传进行识别
+* 预览
+![image](https://github.com/WThirteen/asr_AISHELL-3/assets/100677199/59201975-12ea-46cf-9e4a-e490c02211c0)
+
 ## 查看训练日志
 输入命令
 ```
