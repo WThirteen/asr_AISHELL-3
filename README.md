@@ -54,5 +54,6 @@ __epochs=25__
 ![image](https://github.com/WThirteen/asr_thchs30/assets/100677199/14ef3f58-7bb1-4f85-bc58-d49d761a86ae)
 
 ## api的部分参考
-[Tensorflow-FaceRecognition](https://github.com/yeyupiaoling/Tensorflow-FaceRecognition)  
+[Whisper-Finetune](https://github.com/yeyupiaoling/Whisper-Finetune)  
+
 将原来微调的whisper模型换成这里训练的asr模型
